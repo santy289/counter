@@ -6,13 +6,13 @@ import {
   RESTART,
 } from './types'
 
-export const initialState = {
+const initialState = {
   count: 0,
   countInterval: 1,
-  increment: true,
+  increment: false,
 }
 
-function reducer(state, action){
+function reducer(state = initialState, action){
   switch(action.type){
     case INCREMENT:
       return {
@@ -37,7 +37,7 @@ function reducer(state, action){
     case RESTART:
       return initialState;
     default:
-      throw new Error()
+      return state;
   }
 }
 

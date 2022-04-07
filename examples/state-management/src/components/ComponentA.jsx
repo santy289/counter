@@ -1,11 +1,11 @@
-import { useAppContext } from '../store';
+import {useSelector } from 'react-redux';
 
 const CompA = () => {
-  const {state} = useAppContext()
+  const count = useSelector(state => state.count);
 
   return (
     <h1>
-      <p>Count is {state.count}</p>
+      <p>Count is {count}</p>
     </h1>
   )
 }

@@ -1,4 +1,13 @@
-import { createContext, useReducer, useContext } from "react";
+import {createStore} from 'redux';
+import {composeWithDevTools} from 'redux-devtools-extension';
+
+import reducer from './reducer';
+
+const store = createStore(reducer, composeWithDevTools());
+
+export default store;
+
+/* import { createContext, useReducer, useContext } from "react";
 
 import reducer, { initialState } from './reducer'
 
@@ -24,3 +33,4 @@ export function useAppContext() {
   }
   return context
 }
+ */

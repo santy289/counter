@@ -1,18 +1,19 @@
-import { useAppContext } from '../store';
+import { useDispatch , useSelector } from 'react-redux';
 import {
   decreaseCount,
   increaseCount,
-  increment,
+  increment as incrementAction,
   restart,
   setMyInterval,
 } from '../store/actions';
 
 const Count = () => {
-  const {state, dispatch} = useAppContext()
+  const dispatch = useDispatch();
+  const increment = useSelector(state => state.increment);
 
   const handleIncrement = (e) => {
     const { checked } = e.target
-    dispatch(increment(checked))
+    dispatch(incrementAction(checked))
   }
 
   const handleCountInterval = (e) => {
@@ -21,7 +22,7 @@ const Count = () => {
   }
 
   const handleCount = () => {
-    if (state.increment) {
+    if (increment) {
       dispatch(increaseCount())
     } else {
       dispatch(decreaseCount())
@@ -44,7 +45,7 @@ const Count = () => {
 
       <br />
       <button onClick={handleCount}>
-        {state.increment ? 'Incrementar' : 'Decrementar'}
+        {increment ? 'Incrementar' : 'Decrementar'}
       </button>
       <br />
       <button onClick={handleRestart}>Restart</button>
